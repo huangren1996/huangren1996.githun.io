@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对不起</title>
+    <style>
+        body {
+            background-color: #f0e68c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0 10px; /* 为手机提供左右内边距 */
+            box-sizing: border-box;
+        }
+        .message-box {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            width: 350px; /* 最大宽度 */
+        }
+        h1 {
+            color: #d9534f;
+            font-size: 24px;
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .heart {
+            font-size: 40px;
+            color: #e74c3c;
+            animation: heartbeat 2s infinite;
+        }
+        @keyframes heartbeat {
+            0%, 20%, 50%, 80%, 100% {
+                transform: scale(1);
+            }
+            40% {
+                transform: scale(1.3);
+            }
+            60% {
+                transform: scale(1.5);
+            }
+        }
+        .button {
+            padding: 8px 16px;
+            background-color: #d9534f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #c9302c;
+        }
+        .hidden {
+            display: none;
+        }
+        .new-message {
+            font-size: 18px;
+            color: #d9534f;
+            margin-top: 20px;
+        }
+        .new-button {
+            padding: 8px 16px;
+            background-color: #5bc0de;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .new-button:hover {
+            background-color: #31b0d5;
+        }
+        img {
+            max-width: 100%; /* 确保图片不会超出容器 */
+            height: auto;
+            border-radius: 10px;
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 14px;
+            }
+            .heart {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="message-box">
+        <h1 id="initial-heading">对不起</h1>
+        <p id="initial-text">宝贝安安，</p>
+        <p id="initial-text-2">对不起，胖皮卡让宝受委屈了，哥哥是坏坏，安安可以再给哥哥一次机会么？</p>
+        <img id="apology-image" src="https://pic1.zhimg.com/50/v2-e9c5f1db46525362867b00c158a838d2_720w.jpg?source=2c26e567" alt="道歉图片">
+        <p class="heart">❤️</p>
+        <button id="action-button" class="button" onclick="changeContent()">打打</button>
+        <p id="new-message" class="hidden new-message">快乐修勾，快乐皮卡会永远在一起！</p>
+        <audio id="background-music">
+            <source src="http://music.163.com/song/media/outer/url?id=27901669.mp3" type="audio/mp3">
+            您的浏览器不支持音频元素。
+        </audio>
+    </div>
+    <script>
+        function changeContent() {
+            var img = document.getElementById('apology-image');
+            var newMessage = document.getElementById('new-message');
+            var initialHeading = document.getElementById('initial-heading');
+            var initialText = document.getElementById('initial-text');
+            var initialText2 = document.getElementById('initial-text-2');
+            var button = document.getElementById('action-button');
+            var audio = document.getElementById('background-music');
+
+            // 隐藏最开始的语句
+            initialHeading.style.display = 'none';
+            initialText.style.display = 'none';
+            initialText2.style.display = 'none';
+
+            // 显示新的文本
+            newMessage.style.display = 'block';
+
+            // 更换图片
+            img.src = 'https://gd-hbimg.huaban.com/35616e30875129ae7d7b09e5a176502f600c5137403be-xKjTNG_fw658'; // 更换为新图片的链接
+
+            // 更新按钮
+            button.innerHTML = '我们和好吧'; // 更换按钮文本
+            button.className = 'new-button'; // 更换按钮样式
+            button.onclick = function() { alert('谢谢你！'); }; // 更换按钮功能
+
+            // 播放音频
+            audio.play().catch(function(error) {
+                console.error('播放音频时出错:', error);
+            });
+        }
+    </script>
+</body>
+</html>
